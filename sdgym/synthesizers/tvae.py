@@ -125,6 +125,13 @@ class TVAESynthesizer(BaseSynthesizer):
                 loss.backward()
                 optimizerAE.step()
                 self.decoder.sigma.data.clamp_(0.01, 1.0)
+                if id_ % 10 == 0:
+                    loss_data = loss.data[0]
+                    train_losses.append(loss_data)
+                    print(
+                        'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.
+                        format(i, id_ * len(data), len(train_loader.dataset),
+                               100. * id_ / len(train_loader), loss_data))
 
     def sample(self, samples):
         steps = samples // self.batch_size + 1
