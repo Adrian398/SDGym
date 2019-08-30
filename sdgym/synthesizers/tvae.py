@@ -98,6 +98,7 @@ class TVAESynthesizer(BaseSynthesizer):
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     def fit(self, train_data, categorical_columns=tuple(), ordinal_columns=tuple()):
+        print('fitting this shit')
         self.transformer = BGMTransformer()
         self.transformer.fit(train_data, categorical_columns, ordinal_columns)
         train_data = self.transformer.transform(train_data)
