@@ -119,7 +119,7 @@ class TVAESynthesizer(BaseSynthesizer):
             for id_, data in enumerate(loader):
                 #edit
                 print(id_)
-                print(len(data))
+                print(data)
                 
                 optimizerAE.zero_grad()
                 real = data[0].to(self.device)
