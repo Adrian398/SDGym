@@ -111,7 +111,10 @@ class TVAESynthesizer(BaseSynthesizer):
         optimizerAE = Adam(
             list(encoder.parameters()) + list(self.decoder.parameters()),
             weight_decay=self.l2scale)
-
+        
+        #edit
+        train_losses = []
+        
         for i in range(self.epochs):
             for id_, data in enumerate(loader):
                 optimizerAE.zero_grad()
@@ -126,8 +129,9 @@ class TVAESynthesizer(BaseSynthesizer):
                 loss.backward()
                 optimizerAE.step()
                 self.decoder.sigma.data.clamp_(0.01, 1.0)
+                #edit
                 if id_ % 10 == 0:
-                    loss_data = loss.data[0]
+                    loss_data = loss.data.item()[0]
                     train_losses.append(loss_data)
                     print(
                         'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.
