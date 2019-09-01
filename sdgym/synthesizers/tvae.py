@@ -139,7 +139,7 @@ class TVAESynthesizer(BaseSynthesizer):
                     train_losses.append(loss_data)
                     print(
                         'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.
-                        format(i, id_ * len(data), len(loader.dataset),
+                        format(i, id_ * len(data[0]), len(loader.dataset),
                                100. * id_ / len(loader), loss_data))
 
     def sample(self, samples):
