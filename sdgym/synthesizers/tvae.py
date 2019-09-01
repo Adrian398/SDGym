@@ -117,6 +117,10 @@ class TVAESynthesizer(BaseSynthesizer):
         
         for i in range(self.epochs):
             for id_, data in enumerate(loader):
+                #edit
+                print(id_)
+                print(len(data))
+                
                 optimizerAE.zero_grad()
                 real = data[0].to(self.device)
                 mu, std, logvar = encoder(real)
