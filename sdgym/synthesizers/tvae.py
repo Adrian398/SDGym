@@ -131,7 +131,7 @@ class TVAESynthesizer(BaseSynthesizer):
                 self.decoder.sigma.data.clamp_(0.01, 1.0)
                 #edit
                 if id_ % 10 == 0:
-                    loss_data = loss.data.item()[0]
+                    loss_data = loss.data.item()
                     train_losses.append(loss_data)
                     print(
                         'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.
